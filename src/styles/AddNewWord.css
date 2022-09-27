@@ -1,0 +1,53 @@
+.addNewWord {
+    margin: 20px auto 0;
+    width: 500px;
+}
+.handleInput input {
+    width: 200px;
+    padding: 10px;
+    outline: 0;
+    font-size: 20px;
+}
+.handleInput button {
+    padding: 10px;
+    font-size: 20px;
+    width: 100px;
+    cursor: pointer;
+}
+.words{
+    border-radius: 10px;
+    width: 100%;
+    position: relative;
+    background-color: #ffffff;
+    padding: 30px 20px;
+    margin-top: 10px;
+}
+
+.word{
+    border-radius: 5px;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #939697;
+    cursor: pointer;
+    background-color: #c5e1e6;
+    height: 50px;
+    margin-bottom: 8px;
+    padding: 5px 10px;
+    display: flex;
+    color: #272727;
+}
+.word span{
+    font-family: 'Poppins',sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+}
+.word button{
+    background-color: #A30000;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    height: 100%;
+    width: 50px;
+    border-radius: 5px;
+}

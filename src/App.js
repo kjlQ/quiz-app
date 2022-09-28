@@ -9,10 +9,10 @@ function App() {
     <div className="App">
         <BrowserRouter >
             <Header />
-          <Routes>
-              <Route path={'/'} element={<Vocabulary />} />
-              <Route path={'/add-new-word'} element={<AddNewWord />} />
-          </Routes>
+            <Routes>
+                <Route path={'/'} element={<Vocabulary />} />
+                <Route path={'/add-new-word'} element={<AddNewWord />} />
+            </Routes>
         </BrowserRouter>
     </div>
   );

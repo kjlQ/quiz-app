@@ -1,21 +1,26 @@
-import React , {useRef} from 'react';
+import React , {useRef,useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
+import Words from "../components/Words";
 
 const AddNewWord = () => {
     const dispatch = useDispatch()
-    const {words} = useSelector(state => state.vocabularyReducer)
     const engRef = useRef(null)
     const uaRef = useRef(null)
+    const {words} = useSelector(state => state.vocabularyReducer)
+
+
+    useEffect(()=> {
+        dispatch({type:'GET__LOCAL__STORAGE',payload:JSON.parse(localStorage.getItem('words'))})
+    },[])
+
+    useEffect(()=> {
+        localStorage.setItem("words",JSON.stringify(words))
+    },[words])
+
 
     const resetInputs = () => {
         engRef.current.value=''
         uaRef.current.value=''
-    }
-
-
-    const deleteWord = (word) => {
-        dispatch({type:"DELETE__WORD",payload:word})
-        console.log(word)
     }
 
     const handleAddWord = () => {
@@ -29,33 +34,25 @@ const AddNewWord = () => {
         resetInputs()
     }
 
+
+
+
+
     return (
         <section className='addNewWord'>
             <div className="handleInput">
+                <div className="language">
+                    <span>Eng</span>
+                    <span>Ua</span>
+                </div>
                 <input ref={engRef} type="text" placeholder={'Type new word...'}/>
                 <input ref={uaRef} type="text" placeholder={'Введіть слово...'}/>
                 <button onClick={()=>handleAddWord()}>Add</button>
             </div>
-            <div className="words">
-                {words &&
-                    words.map(item=><Word deleteWord={deleteWord} {...item} />)
-                }
-            </div>
+            <Words showDelete={true} />
         </section>
     );
 };
 
 export default AddNewWord;
 
-const Word = ({eng,ua,deleteWord}) => {
-    return(
-        <div className="word">
-            <span id="taskname">
-                {eng} - {ua}
-            </span>
-            <button onClick={()=>deleteWord({eng,ua})} className="delete">
-                Delete
-            </button>
-        </div>
-    )
-}

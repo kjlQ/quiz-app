@@ -1,9 +1,10 @@
 import React from 'react';
+import Words from "../components/Words";
 
 const Vocabulary = () => {
     return (
         <div>
-            123
+            <Words showDelete={false} />
         </div>
     );
 };

@@ -3,6 +3,7 @@ import Vocabulary from "./pages/Vocabulary";
 import {Routes , Route , BrowserRouter} from 'react-router-dom'
 import Header from "./components/Header";
 import AddNewWord from "./pages/AddNewWord";
+import Audit from "./pages/Audit";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
             <Routes>
                 <Route path={'/'} element={<Vocabulary />} />
                 <Route path={'/add-new-word'} element={<AddNewWord />} />
+                <Route path={'/audit'} element={<Audit />} />
             </Routes>
         </BrowserRouter>
     </div>

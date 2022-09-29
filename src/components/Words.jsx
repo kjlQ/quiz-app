@@ -15,7 +15,7 @@ const Words = ({showDelete}) => {
     return (
         <div>
             <div className="words">
-                <h1>Список слів</h1>
+                <h1>Список слів ({words.length})</h1>
                 {words.map(item=><Word showDelete={showDelete} deleteWord={deleteWord} {...item} />)}
             </div>
         </div>

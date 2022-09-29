@@ -10,7 +10,7 @@ const AddNewWord = () => {
 
 
     useEffect(()=> {
-        dispatch({type:'GET__LOCAL__STORAGE',payload:JSON.parse(localStorage.getItem('words'))})
+        !words[0] && dispatch({type:'GET__LOCAL__STORAGE',payload:JSON.parse(localStorage.getItem('words'))})
     },[])
 
     useEffect(()=> {

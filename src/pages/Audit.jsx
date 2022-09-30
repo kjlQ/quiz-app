@@ -14,8 +14,6 @@ const Audit = () => {
         localStorage.setItem("words",JSON.stringify(words))
     },[words])
 
-    console.log(words.length)
-
     if(words.length < 10) {
         return (
             <div className="center">

@@ -7,7 +7,6 @@ const Results = () => {
     useEffect(()=> {
         dispatch({type:'GET__LOCAL__STORAGE__RESULTS',payload:JSON.parse(localStorage.getItem('results')|| '[]')})
     },[])
-    console.log(results)
     if(!results[0] || !results) {
         return (
             <div className='center'>
@@ -18,7 +17,7 @@ const Results = () => {
     return (
         <div className='center'>
             <h1>Результати</h1>
-            {results.map((item,i)=><p>{i+1} спроба : {item} %</p>)}
+            {results.map((item,i)=><p key={i}>{i+1} спроба : {item} %</p>)}
         </div>
     );
 };

@@ -6,7 +6,6 @@ const Words = ({showDelete}) => {
     const {words} = useSelector(state => state.vocabularyReducer)
     const deleteWord = (word) => {
         dispatch({type:"DELETE__WORD",payload:word})
-        console.log(word)
     }
     if(!words[0]) {
         return (<h1 className="empty__arr">Тут буде список слів</h1>)
@@ -17,7 +16,7 @@ const Words = ({showDelete}) => {
             <h1>Список слів ({words.length})</h1>
             <nav>
                 <ul>
-                    {words.map(item=><Word showDelete={showDelete} deleteWord={deleteWord} {...item} />)}
+                    {words.map((item,i)=><Word key={i} showDelete={showDelete} deleteWord={deleteWord} {...item} />)}
                 </ul>
             </nav>
         </section>

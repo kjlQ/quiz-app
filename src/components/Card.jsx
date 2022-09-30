@@ -52,8 +52,6 @@ const Card = () => {
         shuffle()
     },[])
 
-    console.log('res=>',results)
-
     useEffect(()=> {
         if(question>9) {
             setQuestRes(rightQuest*10)
@@ -68,7 +66,6 @@ const Card = () => {
     useEffect(()=> {
         results && localStorage.setItem("results",JSON.stringify(results))
     },[results])
-    console.log(results)
 
     const handleAnswer = (ans) => {
         if(ans === answers[question]) {

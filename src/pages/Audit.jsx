@@ -7,7 +7,7 @@ const Audit = () => {
 
     const dispatch = useDispatch()
     useEffect(()=> {
-        dispatch({type:'GET__LOCAL__STORAGE',payload:JSON.parse(localStorage.getItem('words'))})
+        dispatch({type:'GET__LOCAL__STORAGE',payload:JSON.parse(localStorage.getItem('words')|| '[]')})
     },[])
 
     useEffect(()=> {
@@ -16,8 +16,12 @@ const Audit = () => {
 
     console.log(words.length)
 
-    if(words.length < 9) {
-        return 123
+    if(words.length < 10) {
+        return (
+            <div className="center">
+                Додайте будь ласка ще {10-words.length} слова(ів) для проходження перевірки
+            </div>
+        )
     }
     return (<Card />)
 };

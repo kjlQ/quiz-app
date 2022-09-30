@@ -1,6 +1,7 @@
 import React , {useRef,useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import Words from "../components/Words";
+import {preparedWords} from '../js/preparedWords'
 
 const AddNewWord = () => {
     const dispatch = useDispatch()
@@ -10,7 +11,7 @@ const AddNewWord = () => {
 
 
     useEffect(()=> {
-        !words[0] && dispatch({type:'GET__LOCAL__STORAGE',payload:JSON.parse(localStorage.getItem('words'))})
+        !words[0] && dispatch({type:'GET__LOCAL__STORAGE',payload:JSON.parse(localStorage.getItem('words')|| '[]')})
     },[])
 
     useEffect(()=> {
@@ -34,12 +35,12 @@ const AddNewWord = () => {
         resetInputs()
     }
 
-
-
-
-
+    const setPreparedWords = () => {
+        preparedWords.map(item=>dispatch({type:'ADD__WORD' , payload : item}))
+    }
     return (
         <section className='addNewWord'>
+            <button className="addPreparedWords" onClick={()=>setPreparedWords()}>Задати ще 10 заготовлених слів</button>
             <div className="handleInput">
                 <div className="language">
                     <span>Eng</span>

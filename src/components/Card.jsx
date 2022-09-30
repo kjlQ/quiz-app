@@ -7,14 +7,17 @@ const Card = () => {
     const [game , setGame] = useState([])
     const [answers , setAnswers] = useState([])
     const [rightQuest , setRightQuest] = useState(0)
+    const [questRes , setQuestRes] = useState(0)
     const {words} = useSelector(state => state.vocabularyReducer)
+    const {results} = useSelector(state => state.vocabularyReducer)
 
+    const dispatch = useDispatch()
 
 
     const randomNumberArr = () => {
         let arr = [];
         while(arr.length < 10){
-            let r = Math.floor(Math.random() * 10);
+            let r = Math.floor(Math.random() * words.length);
             if(arr.indexOf(r) === -1) arr.push(r);
         }
         return arr
@@ -48,6 +51,24 @@ const Card = () => {
     useEffect(()=> {
         shuffle()
     },[])
+
+    console.log('res=>',results)
+
+    useEffect(()=> {
+        if(question>9) {
+            setQuestRes(rightQuest*10)
+            dispatch({type:"GET__LOCAL__STORAGE__RESULTS",payload:[...results,rightQuest*10]})
+        }
+    },[question])
+
+    useEffect(()=> {
+        dispatch({type:'GET__LOCAL__STORAGE__RESULTS',payload:JSON.parse(localStorage.getItem('results')||'[]')})
+    },[questRes])
+
+    useEffect(()=> {
+        results && localStorage.setItem("results",JSON.stringify(results))
+    },[results])
+    console.log(results)
 
     const handleAnswer = (ans) => {
         if(ans === answers[question]) {

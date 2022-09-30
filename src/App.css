@@ -23,3 +23,15 @@ a {
 li {
     list-style: none;
 }
+
+.center {
+    text-align:center;
+    padding: 20px;
+}
+
+.center h1 {
+    padding-bottom: 20px;
+}
+button {
+    cursor: pointer;
+}

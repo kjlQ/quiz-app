@@ -13,12 +13,14 @@ const Words = ({showDelete}) => {
     }
 
     return (
-        <div>
-            <div className="words">
-                <h1>Список слів ({words.length})</h1>
-                {words.map(item=><Word showDelete={showDelete} deleteWord={deleteWord} {...item} />)}
-            </div>
-        </div>
+        <section className="words">
+            <h1>Список слів ({words.length})</h1>
+            <nav>
+                <ul>
+                    {words.map(item=><Word showDelete={showDelete} deleteWord={deleteWord} {...item} />)}
+                </ul>
+            </nav>
+        </section>
     );
 };
 
@@ -26,16 +28,17 @@ export default Words;
 
 const Word = ({eng,ua,deleteWord,showDelete}) => {
     return(
-        <div className="word">
+        <li>
+            <div className="word">
             <span id="taskname">
                 {eng} - {ua}
             </span>
-            {showDelete &&
-                <button onClick={()=>deleteWord({eng,ua})} className="delete">
-                    Delete
-                </button>
-            }
-
-        </div>
+                {showDelete &&
+                    <button onClick={()=>deleteWord({eng,ua})} className="delete">
+                        Delete
+                    </button>
+                }
+            </div>
+        </li>
     )
 }

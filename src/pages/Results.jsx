@@ -11,7 +11,8 @@ const Results = () => {
     useEffect(()=> {
         setAvg(results.reduce((acc,sum)=>sum+acc,0)/results.length)
     },[results])
-    if(!results[0] || !results) {
+    console.log(results)
+    if(!results.length) {
         return (
             <div className='center'>
                 Поки немає результатів

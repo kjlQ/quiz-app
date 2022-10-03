@@ -64,7 +64,7 @@ const Card = () => {
     },[questRes])
 
     useEffect(()=> {
-        results && localStorage.setItem("results",JSON.stringify(results))
+        localStorage.setItem("results",JSON.stringify(results))
     },[results])
 
     const handleAnswer = (ans) => {
